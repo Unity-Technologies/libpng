@@ -4606,3 +4606,8 @@ png_image_error(png_imagep image, png_const_charp error_message)
 
 #endif /* SIMPLIFIED READ/WRITE */
 #endif /* READ || WRITE */
+
+png_uint_32 png_unity_get_crc(png_structrp png_ptr)
+{
+	return png_ptr->crc;
+}

@@ -27,11 +27,19 @@
    /* We must ensure that zlib uses 'const' in declarations. */
 #  define ZLIB_CONST
 #endif
-#include "zlib.h"
+
+#ifdef UNITY_LIBPNG_USE_SYSTEM_ZLIB
+#include <zlib.h>
+#else
+#include "External/zlib/src/zlib.h"
+#endif
+
 #ifdef const
    /* zlib.h sometimes #defines const to nothing, undo this. */
 #  undef const
 #endif
+
+#include "pnglibconf.h"
 
 /* zlib.h has mediocre z_const use before 1.2.6, this stuff is for compatibility
  * with older builds.

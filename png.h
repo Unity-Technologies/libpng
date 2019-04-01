@@ -320,6 +320,8 @@
  */
 #define PNG_LIBPNG_VER 10636 /* 1.6.36 */
 
+#include "unityquarantine.h"
+
 /* Library configuration: these options cannot be changed after
  * the library has been built.
  */
@@ -3237,6 +3239,9 @@ PNG_EXPORT(244, int, png_set_option, (png_structrp png_ptr, int option,
 #ifdef PNG_EXPORT_LAST_ORDINAL
   PNG_EXPORT_LAST_ORDINAL(249);
 #endif
+
+// UNITY-specific: Retrieves png_ptr->crc
+png_uint_32 png_unity_get_crc(png_structrp png_ptr);
 
 #ifdef __cplusplus
 }

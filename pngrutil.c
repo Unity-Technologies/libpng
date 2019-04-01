@@ -4043,51 +4043,55 @@ static void
 png_read_filter_row_paeth_multibyte_pixel(png_row_infop row_info, png_bytep row,
     png_const_bytep prev_row)
 {
-   unsigned int bpp = (row_info->pixel_depth + 7) >> 3;
-   png_bytep rp_end = row + bpp;
+    png_uint_32 i;
+    png_bytep rp = row;
+    png_const_bytep pp = prev_row;
+    png_bytep lp = row;
+    png_const_bytep cp = prev_row;
+    png_uint_32 bpp = (row_info->pixel_depth + 7) >> 3;
+    png_uint_32 istop = (png_uint_32)(row_info->rowbytes - bpp);
 
-   /* Process the first pixel in the row completely (this is the same as 'up'
-    * because there is only one candidate predictor for the first row).
-    */
-   while (row < rp_end)
-   {
-      int a = *row + *prev_row++;
-      *row++ = (png_byte)a;
-   }
+    for (i = 0; i < bpp; i++)
+    {
+        *rp = (png_byte)(((int)(*rp) + (int)(*pp++)) & 0xff);
+        rp++;
+    }
 
-   /* Remainder */
-   rp_end = rp_end + (row_info->rowbytes - bpp);
+    for (i = 0; i < istop; i++)   /* use leftover rp,pp */
+    {
+        int a, b, c, pa, pb, pc, p;
 
-   while (row < rp_end)
-   {
-      int a, b, c, pa, pb, pc, p;
+        a = *lp++;
+        b = *pp++;
+        c = *cp++;
 
-      c = *(prev_row - bpp);
-      a = *(row - bpp);
-      b = *prev_row++;
-
-      p = b - c;
-      pc = a - c;
+        p = b - c;
+        pc = a - c;
 
 #ifdef PNG_USE_ABS
-      pa = abs(p);
-      pb = abs(pc);
-      pc = abs(p + pc);
+        pa = abs(p);
+        pb = abs(pc);
+        pc = abs(p + pc);
 #else
-      pa = p < 0 ? -p : p;
-      pb = pc < 0 ? -pc : pc;
-      pc = (p + pc) < 0 ? -(p + pc) : p + pc;
+        pa = p < 0 ? -p : p;
+        pb = pc < 0 ? -pc : pc;
+        pc = (p + pc) < 0 ? -(p + pc) : p + pc;
 #endif
 
-      if (pb < pa)
-      {
-         pa = pb; a = b;
-      }
-      if (pc < pa) a = c;
+        /*
+           if (pa <= pb && pa <= pc)
+              p = a;
+           else if (pb <= pc)
+              p = b;
+           else
+              p = c;
+         */
 
-      a += *row;
-      *row++ = (png_byte)a;
-   }
+        p = (pa <= pb && pa <= pc) ? a : (pb <= pc) ? b : c;
+
+        *rp = (png_byte)(((int)(*rp) + p) & 0xff);
+        rp++;
+    }
 }
 
 static void
@@ -4222,7 +4226,11 @@ png_read_IDAT_data(png_structrp png_ptr, png_bytep output,
        *
        * TODO: deal more elegantly with truncated IDAT lists.
        */
+      #ifdef Z_UNITY_INFLATE_IGNORE_CRC
+      ret = inflate(&png_ptr->zstream, Z_NO_FLUSH | Z_UNITY_INFLATE_IGNORE_CRC);
+      #else
       ret = PNG_INFLATE(png_ptr, Z_NO_FLUSH);
+      #endif
 
       /* Take the unconsumed output back. */
       if (output != NULL)
