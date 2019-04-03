@@ -1,4 +1,4 @@
-
+#if !(defined(UNITY_EXCLUDE_ARM_SOURCES) && defined(__arm__) && defined(__LP64__))
 /* filter_neon_intrinsics.c - NEON optimised filter functions
  *
  * Copyright (c) 2018 Cosmin Truta
@@ -400,3 +400,4 @@ png_read_filter_row_paeth4_neon(png_row_infop row_info, png_bytep row,
 #endif /* PNG_ARM_NEON_OPT > 0 */
 #endif /* PNG_ARM_NEON_IMPLEMENTATION == 1 (intrinsics) */
 #endif /* READ */
+#endif /* #if !(defined(UNITY_EXCLUDE_ARM_SOURCES) && defined(__arm__) && defined(__LP64__)) */

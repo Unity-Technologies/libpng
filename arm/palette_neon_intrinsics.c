@@ -1,4 +1,4 @@
-
+#if !(defined(UNITY_EXCLUDE_ARM_SOURCES) && defined(__arm__) && defined(__LP64__))
 /* palette_neon_intrinsics.c - NEON optimised palette expansion functions
  *
  * Copyright (c) 2018 Cosmin Truta
@@ -147,3 +147,4 @@ png_do_expand_palette_neon_rgb(png_structrp png_ptr, png_row_infop row_info,
 }
 
 #endif /* PNG_ARM_NEON_IMPLEMENTATION */
+#endif /* #if !(defined(UNITY_EXCLUDE_ARM_SOURCES) && defined(__arm__) && defined(__LP64__)) */

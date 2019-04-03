@@ -1,4 +1,4 @@
-
+#if !(defined(UNITY_EXCLUDE_ARM_SOURCES) && defined(__arm__) && defined(__LP64__))
 /* arm_init.c - NEON optimised filter functions
  *
  * Copyright (c) 2018 Cosmin Truta
@@ -134,3 +134,4 @@ png_init_filter_functions_neon(png_structp pp, unsigned int bpp)
 }
 #endif /* PNG_ARM_NEON_OPT > 0 */
 #endif /* READ */
+#endif /* #if !(defined(UNITY_EXCLUDE_ARM_SOURCES) && defined(__arm__) && defined(__LP64__)) */
