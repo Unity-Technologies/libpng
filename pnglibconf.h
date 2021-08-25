@@ -1,8 +1,8 @@
 /* pnglibconf.h - library build configuration */
 
-/* libpng version 1.6.36 */
+/* libpng version 1.6.37 */
 
-/* Copyright (c) 2018 Cosmin Truta */
+/* Copyright (c) 2018-2019 Cosmin Truta */
 /* Copyright (c) 1998-2002,2004,2006-2018 Glenn Randers-Pehrson */
 
 /* This code is released under the libpng license. */
@@ -109,13 +109,10 @@
 // #define PNG_READ_tIME_SUPPORTED			// UNITY-specific: we don't use image modification time chunk
 #define PNG_READ_tRNS_SUPPORTED
 // #define PNG_READ_zTXt_SUPPORTED			// UNITY-specific: we don't use text chunk
-/*#undef PNG_SAFE_LIMITS_SUPPORTED*/
 #define PNG_SAVE_INT_32_SUPPORTED
 #define PNG_SAVE_UNKNOWN_CHUNKS_SUPPORTED
 #define PNG_SEQUENTIAL_READ_SUPPORTED
 #define PNG_SETJMP_SUPPORTED
-#define PNG_SET_CHUNK_CACHE_LIMIT_SUPPORTED
-#define PNG_SET_CHUNK_MALLOC_LIMIT_SUPPORTED
 #define PNG_SET_OPTION_SUPPORTED
 #define PNG_SET_UNKNOWN_CHUNKS_SUPPORTED
 #define PNG_SET_USER_LIMITS_SUPPORTED
@@ -138,7 +135,7 @@
 #define PNG_USER_TRANSFORM_INFO_SUPPORTED
 #define PNG_USER_TRANSFORM_PTR_SUPPORTED
 // #define PNG_WARNINGS_SUPPORTED				// UNITY-specific: we don't use warnings
-// #define PNG_WRITE_16BIT_SUPPORTED			// UNITY-specific: we don't write pixels with 16-bit data
+#define PNG_WRITE_16BIT_SUPPORTED
 #define PNG_WRITE_ANCILLARY_CHUNKS_SUPPORTED
 // #define PNG_WRITE_BGR_SUPPORTED				// UNITY-specific: we don't write BGR data
 #define PNG_WRITE_CHECK_FOR_INVALID_INDEX_SUPPORTED
@@ -204,8 +201,6 @@
 /* end of options */
 /* settings */
 #define PNG_API_RULE 0
-#define PNG_CALLOC_SUPPORTED
-#define PNG_COST_SHIFT 3
 #define PNG_DEFAULT_READ_MACROS 1
 #define PNG_GAMMA_THRESHOLD_FIXED 5000
 #define PNG_IDAT_READ_SIZE PNG_ZBUF_SIZE
