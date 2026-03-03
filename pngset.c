@@ -1,4 +1,3 @@
-
 /* pngset.c - storage of image information into info struct
  *
  * Copyright (c) 2018-2025 Cosmin Truta

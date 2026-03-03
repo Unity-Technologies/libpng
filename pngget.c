@@ -1,4 +1,3 @@
-
 /* pngget.c - retrieval of values from info struct
  *
  * Copyright (c) 2018-2025 Cosmin Truta
@@ -123,8 +122,8 @@ png_get_compression_type(png_const_structrp png_ptr, png_const_inforp info_ptr)
 }
 
 png_uint_32 PNGAPI
-png_get_x_pixels_per_meter(png_const_structrp png_ptr, png_const_inforp
-   info_ptr)
+png_get_x_pixels_per_meter(png_const_structrp png_ptr,
+    png_const_inforp info_ptr)
 {
 #ifdef PNG_pHYs_SUPPORTED
    png_debug(1, "in png_get_x_pixels_per_meter");
@@ -144,8 +143,8 @@ png_get_x_pixels_per_meter(png_const_structrp png_ptr, png_const_inforp
 }
 
 png_uint_32 PNGAPI
-png_get_y_pixels_per_meter(png_const_structrp png_ptr, png_const_inforp
-    info_ptr)
+png_get_y_pixels_per_meter(png_const_structrp png_ptr,
+    png_const_inforp info_ptr)
 {
 #ifdef PNG_pHYs_SUPPORTED
    png_debug(1, "in png_get_y_pixels_per_meter");
@@ -187,8 +186,8 @@ png_get_pixels_per_meter(png_const_structrp png_ptr, png_const_inforp info_ptr)
 
 #ifdef PNG_FLOATING_POINT_SUPPORTED
 float PNGAPI
-png_get_pixel_aspect_ratio(png_const_structrp png_ptr, png_const_inforp
-   info_ptr)
+png_get_pixel_aspect_ratio(png_const_structrp png_ptr,
+    png_const_inforp info_ptr)
 {
 #ifdef PNG_READ_pHYs_SUPPORTED
    png_debug(1, "in png_get_pixel_aspect_ratio");
@@ -738,7 +737,6 @@ png_get_iCCP(png_const_structrp png_ptr, png_inforp info_ptr,
    }
 
    return 0;
-
 }
 #endif
 
