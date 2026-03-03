@@ -1,6 +1,6 @@
 # CMakeLists.txt - CMake lists for libpng
 #
-# Copyright (c) 2018-2025 Cosmin Truta
+# Copyright (c) 2018-2026 Cosmin Truta
 # Copyright (c) 2007-2018 Glenn Randers-Pehrson
 # Originally written by Christian Ehrlicher, 2007
 #
@@ -14,11 +14,11 @@
 #
 # SPDX-License-Identifier: libpng-2.0
 
-cmake_minimum_required(VERSION 3.14...4.0)
+cmake_minimum_required(VERSION 3.14...4.2)
 
 set(PNGLIB_MAJOR 1)
 set(PNGLIB_MINOR 6)
-set(PNGLIB_REVISION 50)
+set(PNGLIB_REVISION 54)
 set(PNGLIB_SUBREVISION 0)
 #set(PNGLIB_SUBREVISION "git")
 set(PNGLIB_VERSION ${PNGLIB_MAJOR}.${PNGLIB_MINOR}.${PNGLIB_REVISION})
@@ -27,7 +27,7 @@ set(PNGLIB_SHARED_VERSION ${PNGLIB_ABI_VERSION}.${PNGLIB_REVISION}.${PNGLIB_SUBR
 
 project(libpng
         VERSION ${PNGLIB_VERSION}
-        LANGUAGES C ASM)
+        LANGUAGES C)
 
 include(CheckCSourceCompiles)
 include(CheckLibraryExists)
@@ -331,10 +331,6 @@ if(PNG_HARDWARE_OPTIMIZATIONS)
 
       check_c_source_compiles("
         #include <riscv_vector.h>
-        #include <asm/hwcap.h>
-        #ifndef COMPAT_HWCAP_ISA_V /* added in linux-6.5 */
-        #error \"COMPAT_HWCAP_ISA_V is not available\"
-        #endif
         int main() {
           const float src[] = { 0.0f, 0.0f, 0.0f, 0.0f };
           uint64_t ptr[2] = {0x0908060504020100, 0xFFFFFFFF0E0D0C0A};
@@ -890,6 +886,13 @@ if(PNG_TESTS AND PNG_SHARED)
                    FILES ${PNGSTEST_FILES})
     endforeach()
   endforeach()
+
+  # Regression test:
+  # Use stride_extra > 32767 to trigger row_bytes > 65535 for linear images.
+  png_add_test(NAME pngstest-large-stride
+               COMMAND pngstest
+               OPTIONS --stride-extra 33000 --tmpfile "large-stride-" --log
+               FILES "${CMAKE_CURRENT_SOURCE_DIR}/contrib/testpngs/rgb-alpha-16-linear.png")
 
   add_executable(pngunknown ${pngunknown_sources})
   target_link_libraries(pngunknown
