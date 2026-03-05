@@ -10,7 +10,7 @@
 /* and license in png.h */
 
 /* pnglibconf.h */
-/* Machine generated file: DO NOT EDIT */
+/* Machine generated file: DO NOT EDIT. UNITY-specific: edit as needed, since we do not use autoconfigure or cmake */
 /* Derived from: scripts/pnglibconf.dfa */
 #ifndef PNGLCONF_H
 #define PNGLCONF_H
