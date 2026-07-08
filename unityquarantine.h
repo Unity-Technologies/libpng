@@ -36,6 +36,7 @@
 #define png_get_cHRM_XYZ_fixed UNITY_png_get_cHRM_XYZ_fixed
 #define png_get_chunk_cache_max UNITY_png_get_chunk_cache_max
 #define png_get_chunk_malloc_max UNITY_png_get_chunk_malloc_max
+#define png_get_cICP UNITY_png_get_cICP
 #define png_get_color_type UNITY_png_get_color_type
 #define png_get_compression_buffer_size UNITY_png_get_compression_buffer_size
 #define png_get_compression_type UNITY_png_get_compression_type
@@ -43,6 +44,8 @@
 #define png_get_current_pass_number UNITY_png_get_current_pass_number
 #define png_get_current_row_number UNITY_png_get_current_row_number
 #define png_get_error_ptr UNITY_png_get_error_ptr
+#define png_get_eXIf UNITY_png_get_eXIf
+#define png_get_eXIf_1 UNITY_png_get_eXIf_1
 #define png_get_filter_type UNITY_png_get_filter_type
 #define png_get_gAMA UNITY_png_get_gAMA
 #define png_get_gAMA_fixed UNITY_png_get_gAMA_fixed
@@ -149,6 +152,7 @@
 #define png_set_cHRM_XYZ_fixed UNITY_png_set_cHRM_XYZ_fixed
 #define png_set_chunk_cache_max UNITY_png_set_chunk_cache_max
 #define png_set_chunk_malloc_max UNITY_png_set_chunk_malloc_max
+#define png_set_cICP UNITY_png_set_cICP
 #define png_set_compression_buffer_size UNITY_png_set_compression_buffer_size
 #define png_set_compression_level UNITY_png_set_compression_level
 #define png_set_compression_mem_level UNITY_png_set_compression_mem_level
@@ -157,6 +161,8 @@
 #define png_set_compression_window_bits UNITY_png_set_compression_window_bits
 #define png_set_crc_action UNITY_png_set_crc_action
 #define png_set_error_fn UNITY_png_set_error_fn
+#define png_set_eXIf UNITY_png_set_eXIf
+#define png_set_eXIf_1 UNITY_png_set_eXIf_1
 #define png_set_expand UNITY_png_set_expand
 #define png_set_expand_16 UNITY_png_set_expand_16
 #define png_set_expand_gray_1_2_4_to_8 UNITY_png_set_expand_gray_1_2_4_to_8
@@ -320,6 +326,10 @@
 #define png_fixed UNITY_png_fixed
 #define png_fixed_error UNITY_png_fixed_error
 #define png_fixed_inches_from_microns UNITY_png_fixed_inches_from_microns
+// png_fixed_ITU is a real function only when PNG_FIXED_POINT_MACRO_SUPPORTED is off
+#ifndef PNG_FIXED_POINT_MACRO_SUPPORTED
+#define png_fixed_ITU UNITY_png_fixed_ITU
+#endif
 #define png_flush UNITY_png_flush
 #define png_format_buffer UNITY_png_format_buffer
 #define png_format_number UNITY_png_format_number
@@ -333,6 +343,7 @@
 #define png_get_fixed_point UNITY_png_get_fixed_point
 #define png_handle_bKGD UNITY_png_handle_bKGD
 #define png_handle_cHRM UNITY_png_handle_cHRM
+#define png_handle_chunk UNITY_png_handle_chunk
 #define png_handle_gAMA UNITY_png_handle_gAMA
 #define png_handle_iCCP UNITY_png_handle_iCCP
 #define png_handle_IEND UNITY_png_handle_IEND
@@ -391,6 +402,7 @@
 #define png_reciprocal UNITY_png_reciprocal
 #define png_reciprocal2 UNITY_png_reciprocal2
 #define png_reset_crc UNITY_png_reset_crc
+#define png_resolve_file_gamma UNITY_png_resolve_file_gamma
 #define png_rtran_ok UNITY_png_rtran_ok
 #define png_safecat UNITY_png_safecat
 #define png_sRGB_checks UNITY_png_sRGB_checks
@@ -401,9 +413,12 @@
 #define png_write_bKGD UNITY_png_write_bKGD
 #define png_write_cHRM_fixed UNITY_png_write_cHRM_fixed
 #define png_write_chunk_header UNITY_png_write_chunk_header
+#define png_write_cICP UNITY_png_write_cICP
+#define png_write_cLLI_fixed UNITY_png_write_cLLI_fixed
 #define png_write_complete_chunk UNITY_png_write_complete_chunk
 #define png_write_compressed_data_out UNITY_png_write_compressed_data_out
 #define png_write_data UNITY_png_write_data
+#define png_write_eXIf UNITY_png_write_eXIf
 #define png_write_filtered_row UNITY_png_write_filtered_row
 #define png_write_find_filter UNITY_png_write_find_filter
 #define png_write_gAMA_fixed UNITY_png_write_gAMA_fixed
@@ -411,6 +426,7 @@
 #define png_write_IEND UNITY_png_write_IEND
 #define png_write_IHDR UNITY_png_write_IHDR
 #define png_write_iTXt UNITY_png_write_iTXt
+#define png_write_mDCV_fixed UNITY_png_write_mDCV_fixed
 #define png_write_oFFs UNITY_png_write_oFFs
 #define png_write_pCAL UNITY_png_write_pCAL
 #define png_write_pHYs UNITY_png_write_pHYs
@@ -428,6 +444,7 @@
 #define png_XYZ_normalize UNITY_png_XYZ_normalize
 #define png_zalloc UNITY_png_zalloc
 #define png_zfree UNITY_png_zfree
+#define png_zlib_inflate UNITY_png_zlib_inflate
 #define png_zstream_error UNITY_png_zstream_error
 
 #ifdef PNG_WARNINGS_SUPPORTED
