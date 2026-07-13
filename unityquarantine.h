@@ -37,6 +37,8 @@
 #define png_get_chunk_cache_max UNITY_png_get_chunk_cache_max
 #define png_get_chunk_malloc_max UNITY_png_get_chunk_malloc_max
 #define png_get_cICP UNITY_png_get_cICP
+#define png_get_cLLI UNITY_png_get_cLLI
+#define png_get_cLLI_fixed UNITY_png_get_cLLI_fixed
 #define png_get_color_type UNITY_png_get_color_type
 #define png_get_compression_buffer_size UNITY_png_get_compression_buffer_size
 #define png_get_compression_type UNITY_png_get_compression_type
@@ -61,6 +63,8 @@
 #define png_get_io_ptr UNITY_png_get_io_ptr
 #define png_get_io_state UNITY_png_get_io_state
 #define png_get_libpng_ver UNITY_png_get_libpng_ver
+#define png_get_mDCV UNITY_png_get_mDCV
+#define png_get_mDCV_fixed UNITY_png_get_mDCV_fixed
 #define png_get_mem_ptr UNITY_png_get_mem_ptr
 #define png_get_oFFs UNITY_png_get_oFFs
 #define png_get_palette_max UNITY_png_get_palette_max
@@ -153,6 +157,8 @@
 #define png_set_chunk_cache_max UNITY_png_set_chunk_cache_max
 #define png_set_chunk_malloc_max UNITY_png_set_chunk_malloc_max
 #define png_set_cICP UNITY_png_set_cICP
+#define png_set_cLLI UNITY_png_set_cLLI
+#define png_set_cLLI_fixed UNITY_png_set_cLLI_fixed
 #define png_set_compression_buffer_size UNITY_png_set_compression_buffer_size
 #define png_set_compression_level UNITY_png_set_compression_level
 #define png_set_compression_mem_level UNITY_png_set_compression_mem_level
@@ -185,6 +191,8 @@
 #define png_set_invert_mono UNITY_png_set_invert_mono
 #define png_set_keep_unknown_chunks UNITY_png_set_keep_unknown_chunks
 #define png_set_longjmp_fn UNITY_png_set_longjmp_fn
+#define png_set_mDCV UNITY_png_set_mDCV
+#define png_set_mDCV_fixed UNITY_png_set_mDCV_fixed
 #define png_set_mem_fn UNITY_png_set_mem_fn
 #define png_set_oFFs UNITY_png_set_oFFs
 #define png_set_option UNITY_png_set_option
